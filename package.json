@@ -1,0 +1,25 @@
+{
+  "name": "qa_wolf_take_home",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "HEADLESS=false playwright test",
+    "test:auth": "FORCE_AUTH=1 playwright test",
+    "test:auth:headed": "FORCE_AUTH=1 HEADLESS=false playwright test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "playwright": "^1.39.0"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^10.1.0",
+    "@playwright/test": "^1.39.0",
+    "@types/node": "^20.8.9",
+    "dotenv-flow": "^4.1.0"
+  }
+}
