@@ -5,20 +5,32 @@ import fs from "fs";
 
 dotenvFlow.config({ silent: true });
 
-// Path where the browser state (cookies/localStorage) will be saved
 export const AUTH_FILE = path.join(process.cwd(), "authentication-cache/hn.json");
 
 export default defineConfig({
   testDir: "./tests",
   fullyParallel: true,
+  // Retry logic for cloud environments
+  retries: process.env.CI ? 2 : 0,
+  // Ensure the report folder is always generated
+  reporter: [['html', { open: 'never' }], ['list']],
+
   use: {
     baseURL: "https://news.ycombinator.com",
-    // Inject the saved state if it exists
     storageState: fs.existsSync(AUTH_FILE) ? AUTH_FILE : undefined,
     actionTimeout: 10000,
     navigationTimeout: 40000,
+
+    // Debugging artifacts
     trace: "retain-on-failure",
+    video: "on-first-retry",
+    screenshot: "only-on-failure",
   },
-  // We can also use a setup project for more complex flows, 
-  // but for now, we'll ensure the fixture handles the check.
+
+  projects: [
+    {
+      name: 'chromium',
+      use: { browserName: 'chromium' },
+    }
+  ],
 });
