@@ -10,20 +10,30 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
+    
     - uses: actions/setup-node@v4
       with:
         node-version: lts/*
+        
     - name: Install dependencies
       run: npm install
+      
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
+      
     - name: Run Playwright tests
       run: npx playwright test
       env:
         # These link your GitHub Secrets to the test environment
         HN_USERNAME: ${{ secrets.HN_USERNAME }}
         HN_PASSWORD: ${{ secrets.HN_PASSWORD }}
-    - uses: actions/upload-artifact@v4
+
+    - name: Publish Test Summary
+      run: npx github-actions-ctrf ctrf/ctrf-report.json
+      if: always() # Ensures the summary table appears even if tests fail
+
+    - name: Upload HTML Report
+      uses: actions/upload-artifact@v4
       if: always()
       with:
         name: playwright-report

@@ -1,0 +1,76 @@
+{
+  "reportFormat": "CTRF",
+  "specVersion": "0.0.0",
+  "reportId": "5326c6b2-3789-4618-9402-f674abfdd4e3",
+  "timestamp": "2025-12-26T15:19:27.268Z",
+  "generatedBy": "playwright-ctrf-json-reporter",
+  "results": {
+    "tool": {
+      "name": "playwright"
+    },
+    "summary": {
+      "tests": 2,
+      "passed": 2,
+      "failed": 0,
+      "pending": 0,
+      "skipped": 0,
+      "other": 0,
+      "start": 1766762367346,
+      "stop": 1766762378737,
+      "suites": 0
+    },
+    "tests": [
+      {
+        "name": "Login with valid credentials",
+        "status": "passed",
+        "duration": 6773,
+        "start": 1766762368,
+        "stop": 1766762375,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\Nur\\Desktop\\QA_WOLF_TASK\\tests\\authentication\\login.spec.js",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > authentication\\login.spec.js > Authentication - Login Page",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "Validate first 100 articles are sorted newest to oldest",
+        "status": "passed",
+        "duration": 9127,
+        "start": 1766762368,
+        "stop": 1766762377,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\Nur\\Desktop\\QA_WOLF_TASK\\tests\\hackerNews\\newLinks.spec.js",
+        "retries": 0,
+        "flaky": false,
+        "steps": [
+          {
+            "name": "Navigate to newest page",
+            "status": "passed"
+          },
+          {
+            "name": "Collect and validate timestamps",
+            "status": "passed"
+          }
+        ],
+        "suite": "chromium > hackerNews\\newLinks.spec.js > Hacker News Newest Links",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      }
+    ]
+  }
+}

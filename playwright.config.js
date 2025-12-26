@@ -10,10 +10,14 @@ export const AUTH_FILE = path.join(process.cwd(), "authentication-cache/hn.json"
 export default defineConfig({
   testDir: "./tests",
   fullyParallel: true,
-  // Retry logic for cloud environments
   retries: process.env.CI ? 2 : 0,
-  // Ensure the report folder is always generated
-  reporter: [['html', { open: 'never' }], ['list']],
+
+  // Added the CTRF reporter alongside the HTML and List reporters
+  reporter: [
+    ['html', { open: 'never' }],
+    ['list'],
+    ['playwright-ctrf-json-reporter', { outputDir: 'ctrf' }]
+  ],
 
   use: {
     baseURL: "https://news.ycombinator.com",
@@ -21,7 +25,6 @@ export default defineConfig({
     actionTimeout: 10000,
     navigationTimeout: 40000,
 
-    // Debugging artifacts
     trace: "retain-on-failure",
     video: "on-first-retry",
     screenshot: "only-on-failure",
