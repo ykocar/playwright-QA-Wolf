@@ -13,7 +13,7 @@ This framework validates authentication and ensures data integrity for community
 
 ---
 
-## 🛠️ Environment Setup
+## Environment Setup
 
 ### 1) Install Node.js
 
@@ -44,7 +44,7 @@ npx playwright install --with-deps
 
 ---
 
-## 🔑 Configuration
+## Configuration
 
 Credentials are stored in a local environment file and loaded via `dotenv-flow`.
 
@@ -60,7 +60,7 @@ HN_PASSWORD=your_password_here
 
 ---
 
-## 🧪 Running Tests
+## Running Tests
 
 ### Execute all tests
 
@@ -94,7 +94,7 @@ npx playwright test --ui
 
 ---
 
-## 🏗️ Project Architecture
+## Project Architecture
 
 ### Pages (`/pages`)
 
@@ -126,7 +126,7 @@ npx playwright test tests/authentication/login.spec.js
 
 ---
 
-## 📊 Reports
+## Reports
 
 Open the HTML report after a run:
 
@@ -141,17 +141,23 @@ Artifacts are typically stored in:
 
 ---
 
-## 🤖 CI/CD (GitHub Actions)
+## CI/CD (GitHub Actions)
 
-A GitHub Actions workflow is expected at `.github/workflows/playwright.yml`.
+- This project uses an optimized GitHub Actions workflow located at .github/workflows/playwright.yml.
 
-- Tests run automatically on every `push` or `pull_request` to the `main` branch.
-- Configure repository secrets: `HN_USERNAME` and `HN_PASSWORD`.
-- The workflow uploads reports and failure traces as artifacts for debugging.
+### CTRF Reporting
+
+- Instead of raw logs, we use CTRF (Common Test Report Format) to provide a professional test dashboard directly on the GitHub Summary page.
+
+- Standardization: CTRF provides a universal JSON schema that works across different frameworks.
+
+- Visibility: It injects a visual results table (Pass/Fail/Duration) into GitHub without requiring you to download .zip artifacts.
+
+- Reliability: Combined with retries, it ensures a stable and transparent CI/CD pipeline.
 
 ---
 
-## 🧩 Troubleshooting
+## Troubleshooting
 
 ### Not logged in during newLinks test
 
