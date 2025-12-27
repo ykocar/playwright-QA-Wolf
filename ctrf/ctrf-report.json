@@ -1,8 +1,8 @@
 {
   "reportFormat": "CTRF",
   "specVersion": "0.0.0",
-  "reportId": "5326c6b2-3789-4618-9402-f674abfdd4e3",
-  "timestamp": "2025-12-26T15:19:27.268Z",
+  "reportId": "23faf586-b9a6-4439-afaa-b92bde8ca82d",
+  "timestamp": "2025-12-27T16:50:37.042Z",
   "generatedBy": "playwright-ctrf-json-reporter",
   "results": {
     "tool": {
@@ -15,24 +15,37 @@
       "pending": 0,
       "skipped": 0,
       "other": 0,
-      "start": 1766762367346,
-      "stop": 1766762378737,
+      "start": 1766854237090,
+      "stop": 1766854247143,
       "suites": 0
     },
     "tests": [
       {
         "name": "Login with valid credentials",
         "status": "passed",
-        "duration": 6773,
-        "start": 1766762368,
-        "stop": 1766762375,
+        "duration": 6394,
+        "start": 1766854238,
+        "stop": 1766854244,
         "rawStatus": "passed",
         "tags": [],
         "type": "e2e",
         "filePath": "C:\\Users\\Nur\\Desktop\\QA_WOLF_TASK\\tests\\authentication\\login.spec.js",
         "retries": 0,
         "flaky": false,
-        "steps": [],
+        "steps": [
+          {
+            "name": "Ensure clean state (logout if already logged in)",
+            "status": "passed"
+          },
+          {
+            "name": "Login with valid credentials",
+            "status": "passed"
+          },
+          {
+            "name": "Verify user is authenticated",
+            "status": "passed"
+          }
+        ],
         "suite": "chromium > authentication\\login.spec.js > Authentication - Login Page",
         "attachments": [],
         "stdout": [],
@@ -44,9 +57,9 @@
       {
         "name": "Validate first 100 articles are sorted newest to oldest",
         "status": "passed",
-        "duration": 9127,
-        "start": 1766762368,
-        "stop": 1766762377,
+        "duration": 8805,
+        "start": 1766854238,
+        "stop": 1766854246,
         "rawStatus": "passed",
         "tags": [],
         "type": "e2e",

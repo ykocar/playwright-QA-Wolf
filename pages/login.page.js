@@ -55,14 +55,13 @@ export class LoginPage extends BasePage {
 
         await this.get(locators.actions.login).click();
 
-        // Wait for successful redirect (usually to the home page or user profile)
+        // Wait for successful redirect
         await this.page.waitForURL((url) => url.origin === 'https://news.ycombinator.com' && !url.pathname.includes('/login'));
     }
 
     async handleCaptcha() {
         const checkbox = this.get(locators.captcha.checkbox);
         try {
-            // Check if captcha exists without failing the test if it's absent
             if (await checkbox.isVisible({ timeout: 2000 })) {
                 console.warn("⚠️ CAPTCHA detected. Attempting to click...");
                 await checkbox.click({ force: true });
@@ -70,7 +69,6 @@ export class LoginPage extends BasePage {
                 await expect(checkbox).toHaveAttribute("aria-checked", "true", { timeout: 60000 });
             }
         } catch (e) {
-            // Captcha not present or interaction timed out
         }
     }
 }

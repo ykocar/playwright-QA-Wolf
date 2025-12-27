@@ -17,10 +17,15 @@ export class NewLinksPage extends BasePage {
             const count = await ageElements.count();
 
             for (let i = 0; i < count && timestamps.length < 100; i++) {
+                /**
+                * On the real Hacker News page, each `.age` element has a hidden `title` attribute
+                * like "2025-12-26T15:59:15 1766764755".
+                * We extract the second value (Unix timestamp in seconds) and convert it to a number
+                * so we can compare and validate sorting reliably.
+                */
                 const titleAttr = await ageElements.nth(i).getAttribute('title');
-                // titleAttr is usually "YYYY-MM-DDTHH:MM:SS"
-                const date = new Date(titleAttr.split(' ')[0]);
-                timestamps.push(date.getTime());
+                const unixSeconds = Number(titleAttr.split(' ')[1]); // extract unix timestamp (seconds)
+                timestamps.push(unixSeconds);
             }
 
             if (timestamps.length < 100) {
@@ -33,7 +38,8 @@ export class NewLinksPage extends BasePage {
 
     async areTimestampsSortedDescending(timestamps) {
         for (let i = 0; i < timestamps.length - 1; i++) {
-            if (timestamps[i] < timestamps[i + 1]) return false;
+            if (timestamps[i] < timestamps[i + 1])
+                return false;
         }
         return true;
     }
